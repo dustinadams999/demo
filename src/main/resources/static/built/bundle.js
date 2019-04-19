@@ -68734,6 +68734,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = (function (r
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-chartjs-2 */ "./node_modules/react-chartjs-2/es/index.js");
+/* harmony import */ var _rawData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./rawData */ "./src/main/js/rawData.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
@@ -68768,6 +68769,7 @@ var client = __webpack_require__(/*! ./client */ "./src/main/js/client.js");
 
 
 
+
 var App =
 /*#__PURE__*/
 function (_React$Component) {
@@ -68788,31 +68790,35 @@ function (_React$Component) {
 
   return App;
 }(React.Component);
-
-var veryRawData = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-  datasets: [{
-    label: 'Values',
-    fill: false,
-    lineTension: 0.1,
-    backgroundColor: 'rgba(75,192,192,0.4)',
-    borderColor: 'rgba(75,192,192,1)',
-    borderCapStyle: 'butt',
-    borderDash: [],
-    borderDashOffset: 0.0,
-    borderJoinStyle: 'miter',
-    pointBorderColor: 'rgba(75,192,192,1)',
-    pointBackgroundColor: '#fff',
-    pointBorderWidth: 1,
-    pointHoverRadius: 5,
-    pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-    pointHoverBorderColor: 'rgba(220,220,220,1)',
-    pointHoverBorderWidth: 2,
-    pointRadius: 1,
-    pointHitRadius: 10,
-    data: [65, 59, 80, 81, 56, 55, 40]
-  }]
+/*
+const veryRawData = {
+    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [
+    {
+        label: 'Values',
+        fill: false,
+        lineTension: 0.1,
+        backgroundColor: 'rgba(75,192,192,0.4)',
+        borderColor: 'rgba(75,192,192,1)',
+        borderCapStyle: 'butt',
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: 'miter',
+        pointBorderColor: 'rgba(75,192,192,1)',
+        pointBackgroundColor: '#fff',
+        pointBorderWidth: 1,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+        pointHoverBorderColor: 'rgba(220,220,220,1)',
+        pointHoverBorderWidth: 2,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: [65, 59, 80, 81, 56, 55, 40]
+    }
+]
 };
+*/
+
 
 var LineDemo =
 /*#__PURE__*/
@@ -68829,8 +68835,8 @@ function (_React$Component2) {
       rawLabels: [],
       rawData: [],
       data: {
-        labels: veryRawData.labels,
-        datasets: veryRawData.datasets
+        labels: _rawData__WEBPACK_IMPORTED_MODULE_1__["VRD"].labels,
+        datasets: _rawData__WEBPACK_IMPORTED_MODULE_1__["VRD"].datasets
       },
       dataLoaded: false,
       labelsLoaded: false
@@ -68867,22 +68873,22 @@ function (_React$Component2) {
   }, {
     key: "setLabelsState",
     value: function setLabelsState() {
-      veryRawData.labels = this.state.rawLabels;
+      _rawData__WEBPACK_IMPORTED_MODULE_1__["VRD"].labels = this.state.rawLabels;
       this.setState({
         data: {
-          labels: veryRawData.labels,
-          datasets: veryRawData.datasets
+          labels: _rawData__WEBPACK_IMPORTED_MODULE_1__["VRD"].labels,
+          datasets: _rawData__WEBPACK_IMPORTED_MODULE_1__["VRD"].datasets
         }
       });
     }
   }, {
     key: "setDatasetsState",
     value: function setDatasetsState() {
-      veryRawData.datasets[0].data = _toConsumableArray(this.state.rawData);
+      _rawData__WEBPACK_IMPORTED_MODULE_1__["VRD"].datasets[0].data = _toConsumableArray(this.state.rawData);
       this.setState({
         data: {
-          labels: veryRawData.labels,
-          datasets: veryRawData.datasets
+          labels: _rawData__WEBPACK_IMPORTED_MODULE_1__["VRD"].labels,
+          datasets: _rawData__WEBPACK_IMPORTED_MODULE_1__["VRD"].datasets
         }
       });
     }
@@ -68935,6 +68941,44 @@ module.exports = rest.wrap(mime, {
     'Accept': 'application/hal+json'
   }
 });
+
+/***/ }),
+
+/***/ "./src/main/js/rawData.js":
+/*!********************************!*\
+  !*** ./src/main/js/rawData.js ***!
+  \********************************/
+/*! exports provided: VRD */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VRD", function() { return VRD; });
+var VRD = {
+  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+  datasets: [{
+    label: 'Values',
+    fill: false,
+    lineTension: 0.1,
+    backgroundColor: 'rgba(75,192,192,0.4)',
+    borderColor: 'rgba(75,192,192,1)',
+    borderCapStyle: 'butt',
+    borderDash: [],
+    borderDashOffset: 0.0,
+    borderJoinStyle: 'miter',
+    pointBorderColor: 'rgba(75,192,192,1)',
+    pointBackgroundColor: '#fff',
+    pointBorderWidth: 1,
+    pointHoverRadius: 5,
+    pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+    pointHoverBorderColor: 'rgba(220,220,220,1)',
+    pointHoverBorderWidth: 2,
+    pointRadius: 1,
+    pointHitRadius: 10,
+    data: [65, 59, 80, 81, 56, 55, 40]
+  }]
+};
+
 
 /***/ }),
 
