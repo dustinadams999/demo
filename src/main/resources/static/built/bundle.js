@@ -68734,7 +68734,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = (function (r
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-chartjs-2 */ "./node_modules/react-chartjs-2/es/index.js");
-/* harmony import */ var _rawData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./rawData */ "./src/main/js/rawData.js");
+/* harmony import */ var _data_rawData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./data/rawData */ "./src/main/js/data/rawData.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
@@ -68784,41 +68784,12 @@ function (_React$Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
-      return React.createElement(LineDemo, null);
+      return React.createElement("div", null, React.createElement("hr", null), React.createElement(LineDemo, null), React.createElement("hr", null));
     }
   }]);
 
   return App;
 }(React.Component);
-/*
-const veryRawData = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [
-    {
-        label: 'Values',
-        fill: false,
-        lineTension: 0.1,
-        backgroundColor: 'rgba(75,192,192,0.4)',
-        borderColor: 'rgba(75,192,192,1)',
-        borderCapStyle: 'butt',
-        borderDash: [],
-        borderDashOffset: 0.0,
-        borderJoinStyle: 'miter',
-        pointBorderColor: 'rgba(75,192,192,1)',
-        pointBackgroundColor: '#fff',
-        pointBorderWidth: 1,
-        pointHoverRadius: 5,
-        pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-        pointHoverBorderColor: 'rgba(220,220,220,1)',
-        pointHoverBorderWidth: 2,
-        pointRadius: 1,
-        pointHitRadius: 10,
-        data: [65, 59, 80, 81, 56, 55, 40]
-    }
-]
-};
-*/
-
 
 var LineDemo =
 /*#__PURE__*/
@@ -68835,8 +68806,8 @@ function (_React$Component2) {
       rawLabels: [],
       rawData: [],
       data: {
-        labels: _rawData__WEBPACK_IMPORTED_MODULE_1__["VRD"].labels,
-        datasets: _rawData__WEBPACK_IMPORTED_MODULE_1__["VRD"].datasets
+        labels: _data_rawData__WEBPACK_IMPORTED_MODULE_1__["lineData"].labels,
+        datasets: _data_rawData__WEBPACK_IMPORTED_MODULE_1__["lineData"].datasets
       },
       dataLoaded: false,
       labelsLoaded: false
@@ -68851,7 +68822,7 @@ function (_React$Component2) {
 
       client({
         method: 'GET',
-        path: '/api/months'
+        path: '/api/line_months'
       }).done(function (response) {
         _this2.setState({
           rawLabels: response.entity
@@ -68861,7 +68832,7 @@ function (_React$Component2) {
       });
       client({
         method: 'GET',
-        path: '/api/points'
+        path: '/api/line_points'
       }).done(function (response) {
         _this2.setState({
           rawData: response.entity
@@ -68873,22 +68844,22 @@ function (_React$Component2) {
   }, {
     key: "setLabelsState",
     value: function setLabelsState() {
-      _rawData__WEBPACK_IMPORTED_MODULE_1__["VRD"].labels = this.state.rawLabels;
+      _data_rawData__WEBPACK_IMPORTED_MODULE_1__["lineData"].labels = this.state.rawLabels;
       this.setState({
         data: {
-          labels: _rawData__WEBPACK_IMPORTED_MODULE_1__["VRD"].labels,
-          datasets: _rawData__WEBPACK_IMPORTED_MODULE_1__["VRD"].datasets
+          labels: _data_rawData__WEBPACK_IMPORTED_MODULE_1__["lineData"].labels,
+          datasets: _data_rawData__WEBPACK_IMPORTED_MODULE_1__["lineData"].datasets
         }
       });
     }
   }, {
     key: "setDatasetsState",
     value: function setDatasetsState() {
-      _rawData__WEBPACK_IMPORTED_MODULE_1__["VRD"].datasets[0].data = _toConsumableArray(this.state.rawData);
+      _data_rawData__WEBPACK_IMPORTED_MODULE_1__["lineData"].datasets[0].data = _toConsumableArray(this.state.rawData);
       this.setState({
         data: {
-          labels: _rawData__WEBPACK_IMPORTED_MODULE_1__["VRD"].labels,
-          datasets: _rawData__WEBPACK_IMPORTED_MODULE_1__["VRD"].datasets
+          labels: _data_rawData__WEBPACK_IMPORTED_MODULE_1__["lineData"].labels,
+          datasets: _data_rawData__WEBPACK_IMPORTED_MODULE_1__["lineData"].datasets
         }
       });
     }
@@ -68944,17 +68915,17 @@ module.exports = rest.wrap(mime, {
 
 /***/ }),
 
-/***/ "./src/main/js/rawData.js":
-/*!********************************!*\
-  !*** ./src/main/js/rawData.js ***!
-  \********************************/
-/*! exports provided: VRD */
+/***/ "./src/main/js/data/rawData.js":
+/*!*************************************!*\
+  !*** ./src/main/js/data/rawData.js ***!
+  \*************************************/
+/*! exports provided: lineData */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VRD", function() { return VRD; });
-var VRD = {
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lineData", function() { return lineData; });
+var lineData = {
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
   datasets: [{
     label: 'Values',

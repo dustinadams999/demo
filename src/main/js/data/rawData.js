@@ -1,4 +1,4 @@
-const VRD = {
+const lineData = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
     datasets: [
         {
@@ -25,4 +25,4 @@ const VRD = {
     ]
 };
 
-export { VRD };
+export { lineData };

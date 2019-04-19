@@ -19,9 +19,9 @@ public class HomeController {
         return "index";
     }
 
-    @RequestMapping(value="/api/months", method = RequestMethod.GET)
+    @RequestMapping(value="/api/line_months", method = RequestMethod.GET)
     @ResponseBody
-    public ArrayList<String> getMonths() {
+    public ArrayList<String> getLineMonths() {
         ArrayList<String> al = new ArrayList<>();
         al.add("January");
         al.add("February");
@@ -38,12 +38,22 @@ public class HomeController {
         return al;
     }
 
-    @RequestMapping(value="api/points", method = RequestMethod.GET)
+    @RequestMapping(value="api/line_points", method = RequestMethod.GET)
     @ResponseBody
-    public ArrayList<Integer> getPoints() {
+    public ArrayList<Integer> getLinePoints() {
         ArrayList<Integer> ints = new ArrayList<>();
         for(int i = 0; i < 12; i++) {
             ints.add((int)(Math.random() * 100));
+        }
+        return ints;
+    }
+
+    @RequestMapping(value="api/pie_points", method = RequestMethod.GET)
+    @ResponseBody
+    public ArrayList<Integer> getPieData() {
+        ArrayList<Integer> ints = new ArrayList<>();
+        for(int i = 0; i < 4; i++) {
+            ints.add((int)(Math.random() * 50));
         }
         return ints;
     }
