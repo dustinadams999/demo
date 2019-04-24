@@ -68734,7 +68734,8 @@ var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = (function (r
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-chartjs-2 */ "./node_modules/react-chartjs-2/es/index.js");
-/* harmony import */ var _data_rawData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./data/rawData */ "./src/main/js/data/rawData.js");
+/* harmony import */ var _data_rawLineData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./data/rawLineData */ "./src/main/js/data/rawLineData.js");
+/* harmony import */ var _data_rawDoughnutData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./data/rawDoughnutData */ "./src/main/js/data/rawDoughnutData.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
@@ -68770,6 +68771,8 @@ var client = __webpack_require__(/*! ./client */ "./src/main/js/client.js");
 
 
 
+
+
 var App =
 /*#__PURE__*/
 function (_React$Component) {
@@ -68784,7 +68787,7 @@ function (_React$Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
-      return React.createElement("div", null, React.createElement("hr", null), React.createElement(LineDemo, null), React.createElement("hr", null));
+      return React.createElement("div", null, React.createElement("hr", null), React.createElement(LineDemo, null), React.createElement("hr", null), React.createElement(DoughnutDemo, null));
     }
   }]);
 
@@ -68806,8 +68809,8 @@ function (_React$Component2) {
       rawLabels: [],
       rawData: [],
       data: {
-        labels: _data_rawData__WEBPACK_IMPORTED_MODULE_1__["lineData"].labels,
-        datasets: _data_rawData__WEBPACK_IMPORTED_MODULE_1__["lineData"].datasets
+        labels: _data_rawLineData__WEBPACK_IMPORTED_MODULE_1__["lineData"].labels,
+        datasets: _data_rawLineData__WEBPACK_IMPORTED_MODULE_1__["lineData"].datasets
       },
       dataLoaded: false,
       labelsLoaded: false
@@ -68844,29 +68847,29 @@ function (_React$Component2) {
   }, {
     key: "setLabelsState",
     value: function setLabelsState() {
-      _data_rawData__WEBPACK_IMPORTED_MODULE_1__["lineData"].labels = this.state.rawLabels;
+      _data_rawLineData__WEBPACK_IMPORTED_MODULE_1__["lineData"].labels = this.state.rawLabels;
       this.setState({
         data: {
-          labels: _data_rawData__WEBPACK_IMPORTED_MODULE_1__["lineData"].labels,
-          datasets: _data_rawData__WEBPACK_IMPORTED_MODULE_1__["lineData"].datasets
+          labels: _data_rawLineData__WEBPACK_IMPORTED_MODULE_1__["lineData"].labels,
+          datasets: _data_rawLineData__WEBPACK_IMPORTED_MODULE_1__["lineData"].datasets
         }
       });
     }
   }, {
     key: "setDatasetsState",
     value: function setDatasetsState() {
-      _data_rawData__WEBPACK_IMPORTED_MODULE_1__["lineData"].datasets[0].data = _toConsumableArray(this.state.rawData);
+      _data_rawLineData__WEBPACK_IMPORTED_MODULE_1__["lineData"].datasets[0].data = _toConsumableArray(this.state.rawData);
       this.setState({
         data: {
-          labels: _data_rawData__WEBPACK_IMPORTED_MODULE_1__["lineData"].labels,
-          datasets: _data_rawData__WEBPACK_IMPORTED_MODULE_1__["lineData"].datasets
+          labels: _data_rawLineData__WEBPACK_IMPORTED_MODULE_1__["lineData"].labels,
+          datasets: _data_rawLineData__WEBPACK_IMPORTED_MODULE_1__["lineData"].datasets
         }
       });
     }
   }, {
     key: "render",
     value: function render() {
-      return React.createElement("div", null, React.createElement("h2", null, "Line Example"), React.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_0__["Line"], {
+      return React.createElement("div", null, React.createElement("h2", null, "Line"), React.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_0__["Line"], {
         ref: "chart",
         data: this.state.data
       }));
@@ -68874,6 +68877,82 @@ function (_React$Component2) {
   }]);
 
   return LineDemo;
+}(React.Component);
+
+var DoughnutDemo =
+/*#__PURE__*/
+function (_React$Component3) {
+  _inherits(DoughnutDemo, _React$Component3);
+
+  function DoughnutDemo(props) {
+    var _this3;
+
+    _classCallCheck(this, DoughnutDemo);
+
+    _this3 = _possibleConstructorReturn(this, _getPrototypeOf(DoughnutDemo).call(this, props));
+    _this3.state = {
+      rawLabels: [],
+      rawData: [],
+      data: {
+        labels: _data_rawDoughnutData__WEBPACK_IMPORTED_MODULE_2__["rawDoughnutData"].labels,
+        datasets: _data_rawDoughnutData__WEBPACK_IMPORTED_MODULE_2__["rawDoughnutData"].datasets
+      },
+      dataLoaded: false,
+      labelsLoaded: false
+    };
+    return _this3;
+  }
+
+  _createClass(DoughnutDemo, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this4 = this;
+
+      client({
+        method: 'GET',
+        path: '/api/doughnut_data'
+      }).done(function (response) {
+        var keys = [];
+        var vals = [];
+
+        for (var k in response.entity) {
+          keys.push(k);
+          vals.push(response.entity[k]);
+        }
+
+        _this4.setState({
+          rawLabels: keys
+        });
+
+        _this4.setState({
+          rawData: vals
+        });
+
+        _this4.setCustomState();
+      });
+    }
+  }, {
+    key: "setCustomState",
+    value: function setCustomState() {
+      _data_rawDoughnutData__WEBPACK_IMPORTED_MODULE_2__["rawDoughnutData"].labels = this.state.rawLabels;
+      _data_rawDoughnutData__WEBPACK_IMPORTED_MODULE_2__["rawDoughnutData"].datasets[0].data = _toConsumableArray(this.state.rawData);
+      this.setState({
+        data: {
+          labels: _data_rawDoughnutData__WEBPACK_IMPORTED_MODULE_2__["rawDoughnutData"].labels,
+          datasets: _data_rawDoughnutData__WEBPACK_IMPORTED_MODULE_2__["rawDoughnutData"].datasets
+        }
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return React.createElement("div", null, React.createElement("h2", null, "Doughnut"), React.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_0__["Doughnut"], {
+        data: this.state.data
+      }));
+    }
+  }]);
+
+  return DoughnutDemo;
 }(React.Component);
 
 ReactDOM.render(React.createElement(App, null), document.getElementById('react'));
@@ -68915,10 +68994,32 @@ module.exports = rest.wrap(mime, {
 
 /***/ }),
 
-/***/ "./src/main/js/data/rawData.js":
-/*!*************************************!*\
-  !*** ./src/main/js/data/rawData.js ***!
-  \*************************************/
+/***/ "./src/main/js/data/rawDoughnutData.js":
+/*!*********************************************!*\
+  !*** ./src/main/js/data/rawDoughnutData.js ***!
+  \*********************************************/
+/*! exports provided: rawDoughnutData */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rawDoughnutData", function() { return rawDoughnutData; });
+var rawDoughnutData = {
+  labels: ['Red', 'Green', 'Yellow'],
+  datasets: [{
+    data: [300, 50, 100],
+    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+    hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+  }]
+};
+
+
+/***/ }),
+
+/***/ "./src/main/js/data/rawLineData.js":
+/*!*****************************************!*\
+  !*** ./src/main/js/data/rawLineData.js ***!
+  \*****************************************/
 /*! exports provided: lineData */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 

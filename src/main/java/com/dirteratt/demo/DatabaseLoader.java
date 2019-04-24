@@ -1,4 +1,4 @@
-package com.dirteratt.demo;
+package main.java.com.dirteratt.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

@@ -1,8 +1,11 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const client = require('./client');
+
 import { Line } from 'react-chartjs-2';
-import { lineData } from './data/rawData';
+import { Doughnut } from 'react-chartjs-2';
+import { lineData } from './data/rawLineData';
+import { rawDoughnutData } from './data/rawDoughnutData';
 
 class App extends React.Component {
 
@@ -16,6 +19,7 @@ class App extends React.Component {
                 <hr />
                 <LineDemo/>
                 <hr />
+                <DoughnutDemo/>
             </div>
         )
     }
@@ -53,8 +57,43 @@ class LineDemo extends React.Component {
 
     render() {
         return (<div>
-                    <h2>Line Example</h2>
+                    <h2>Line</h2>
                     <Line ref="chart" data={this.state.data} />
+                </div>);
+    }
+}
+
+class DoughnutDemo extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {rawLabels: [], rawData: [], data : {labels: rawDoughnutData.labels, datasets: rawDoughnutData.datasets},
+            dataLoaded: false, labelsLoaded: false};
+    }
+
+    componentDidMount() {
+        client({method: 'GET', path: '/api/doughnut_data'}).done(response => {
+            var keys = [];
+            var vals = [];
+            for(var k in response.entity) {
+                keys.push(k);
+                vals.push(response.entity[k]);
+            }
+            this.setState({rawLabels: keys});
+            this.setState({rawData: vals});
+            this.setCustomState();
+        });
+    }
+
+    setCustomState() {
+        rawDoughnutData.labels = this.state.rawLabels;
+        rawDoughnutData.datasets[0].data = [...this.state.rawData];
+        this.setState({data : {labels: rawDoughnutData.labels, datasets: rawDoughnutData.datasets}});
+    }
+
+    render() {
+        return (<div>
+                    <h2>Doughnut</h2>
+                    <Doughnut data={this.state.data} />
                 </div>);
     }
 }

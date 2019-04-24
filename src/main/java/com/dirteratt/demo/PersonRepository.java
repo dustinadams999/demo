@@ -1,4 +1,4 @@
-package com.dirteratt.demo;
+package main.java.com.dirteratt.demo;
 
 import org.springframework.data.repository.CrudRepository;
 
