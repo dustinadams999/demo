@@ -1,4 +1,4 @@
-package main.java.com.dirteratt.demo;
+package com.dirteratt.demo;
 
 import lombok.Data;
 
